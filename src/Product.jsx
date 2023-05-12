@@ -2,7 +2,7 @@ import "./Product.css";
 
 const Product = ({ id, title, price, rating, image }) => {
   return (
-    <div className="product" key={id}>
+    <div className="product">
       <div className="product__info">
         <p>{title}</p>
         <p className="product__price">

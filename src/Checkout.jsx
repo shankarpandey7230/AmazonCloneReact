@@ -1,8 +1,11 @@
+import { SportsBasketball } from "@mui/icons-material";
 import "./Checkout.css";
 import CheckoutProduct from "./CheckoutProduct";
 import Subtotal from "./Subtotal";
+import { useStateValue } from "./StateProvider";
 
 const Checkout = () => {
+  const [{ basket }, dispatch] = useStateValue();
   return (
     <div className="checkout">
       <div className="checkout_left">
@@ -13,9 +16,15 @@ const Checkout = () => {
         />
         <div>
           <h2 className="checkout_title">Your Shopping Basket</h2>
-          <CheckoutProduct />
-          <CheckoutProduct />
-          <CheckoutProduct />
+          {basket.map((item) => (
+            <CheckoutProduct
+              key={item.id}
+              title={item.title}
+              image={item.image}
+              price={item.price}
+              rating={item.rating}
+            />
+          ))}
         </div>
       </div>
       <div className="checkout-right">

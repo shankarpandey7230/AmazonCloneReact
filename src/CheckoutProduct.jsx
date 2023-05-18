@@ -1,23 +1,22 @@
 import "./CheckoutProduct.css";
 
-const CheckoutProduct = () => {
+const CheckoutProduct = ({ id, image, title, price, rating }) => {
   return (
     <div className="checkoutProduct">
-      <img
-        src="https://images-na.ssl-images-amazon.com/images/I/71mEsHyzSCL._SL1000_.jpg"
-        alt=""
-        className="checkoutProduct_image"
-      />
+      <img src={image} alt="" className="checkoutProduct_image" />
       <div className="checkoutProduct_info">
-        <p className="checkoutProduct_title">
-          Bennet Mystic 15.6 inch Laptop Shoulder Messenger Sling Office Bag,
-          Water, Repellent Fabric for Men and Women (Blue)
-        </p>
+        <p className="checkoutProduct_title">{title}</p>
         <p className="checkoutProduct_price">
           <small>$</small>
-          <strong>30</strong>
+          <strong>{price}</strong>
         </p>
-        <div className="checkoutProduct_rating">⭐️⭐️</div>
+        <div className="checkoutProduct_rating">
+          {Array(rating)
+            .fill()
+            .map((_, i) => (
+              <p key={i}>⭐</p>
+            ))}
+        </div>
         <button>Remove From Basket</button>
       </div>
     </div>

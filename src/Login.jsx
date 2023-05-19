@@ -1,37 +1,13 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import "./Login.css";
-import { Link, useHistory } from "react-router-dom";
-// import StorefrontIcon from "@material-ui/icons/Storefront";
+import { Link } from "react-router-dom";
+import StorefrontIcon from "@mui/icons-material/Storefront";
 // import { auth } from "./firebase";
 
 function Login() {
-  const history = useHistory();
+  // const history = useHistory();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
-  const signIn = (e) => {
-    e.preventDefault();
-
-    auth
-      .signInWithEmailAndPassword(email, password)
-      .then((auth) => {
-        history.push("/");
-      })
-      .catch((error) => alert(error.message));
-  };
-
-  const register = (e) => {
-    e.preventDefault();
-
-    auth
-      .createUserWithEmailAndPassword(email, password)
-      .then((auth) => {
-        if (auth) {
-          history.push("/");
-        }
-      })
-      .catch((error) => alert(error.message));
-  };
 
   return (
     <div className="login">
@@ -60,11 +36,7 @@ function Login() {
             onChange={(e) => setPassword(e.target.value)}
           />
 
-          <button
-            type="submit"
-            className="login__signInButton"
-            onClick={signIn}
-          >
+          <button type="submit" className="login__signInButton">
             Sign In
           </button>
         </form>
@@ -75,8 +47,8 @@ function Login() {
           Interest-Based Ads Notice.
         </p>
 
-        <button className="login__registerButton" onClick={register}>
-          Create your eShop Account
+        <button className="login__registerButton">
+          Create your Amazon Account
         </button>
       </div>
     </div>
